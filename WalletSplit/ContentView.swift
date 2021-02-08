@@ -4,7 +4,7 @@ struct ContentView: View {
     @State private var amount = ""
     @State private var selectedNumberOfPeople = 0
     @State private var selectedTip = 0
-    private let tipPercentages = [5, 10, 15, 20, 25, 30]
+    private let tipPercentages = [0, 5, 10, 15, 20, 25]
     
     private var perPersonAmount: Double {
         let _amount = Double(amount) ?? 0
@@ -46,6 +46,7 @@ struct ContentView: View {
                 }
                 Section {
                     Text("$ \(perPersonAmount.description)")
+                        .foregroundColor(tipPercentages[selectedTip] == 0 ? Color.red : Color.white)
                 }
             }
             .navigationBarTitle(Text("Contry app"))
